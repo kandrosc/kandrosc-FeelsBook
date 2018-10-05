@@ -40,6 +40,7 @@ public class DisplayEmotion extends AppCompatActivity {
 
 
 
+        // Updates emotion with new values and returns to MainActivity
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +56,7 @@ public class DisplayEmotion extends AppCompatActivity {
             }
         });
 
+        // Removes emotion from emotion history and returns to MainActivity
         Button delete=findViewById(R.id.delete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +70,7 @@ public class DisplayEmotion extends AppCompatActivity {
     }
 
 
+    // Loads emotion history
     private void load() {
         SharedPreferences sp = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -79,6 +82,7 @@ public class DisplayEmotion extends AppCompatActivity {
             emotions = new ArrayList<>();
         }
     }
+    // Saves emotion history
     private void save() {
 
 

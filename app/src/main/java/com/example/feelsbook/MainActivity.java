@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> labels = new ArrayList<String>();
     ArrayList<Emotion> emotions;
     public final static String EXTRA_MESSAGE = "com.example.feelsbook.MESSAGE";
+    // Initialize emotion counts
     private int joycount=0;
     private int lovecount=0;
     private int surprisecount=0;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
 
+        // Set emotion counts to text views
         final EditText et = (EditText) findViewById(R.id.comment);
         final TextView jc=(TextView)  findViewById(R.id.joycount);
         final TextView lc=(TextView)  findViewById(R.id.lovecount);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         load(adapter);
 
 
+        // Updates emotion counts
         jc.setText(String.valueOf(joycount));
         lc.setText(String.valueOf(lovecount));
         spc.setText(String.valueOf(surprisecount));
@@ -63,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         fc.setText(String.valueOf(fearcount));
 
 
-
-
+        // Joy Button
         Button joy = findViewById(R.id.joy);
         joy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        // Love Button
         Button love = findViewById(R.id.love);
         love.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Surprise Button
         Button surprise = findViewById(R.id.surprise);
         surprise.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Anger Button
         Button anger = findViewById(R.id.anger);
         anger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Sadness Button
         Button sadness = findViewById(R.id.sadness);
         sadness.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Fear Button
         Button fear = findViewById(R.id.fear);
         fear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        // View a saved emotion
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -227,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    // Saves emotion history
     private void save() {
         SharedPreferences sp = getSharedPreferences("shared preferences",MODE_PRIVATE);
         SharedPreferences.Editor editor =sp.edit();
@@ -237,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Loads emotion history and updates emotion counts
     private void load(ArrayAdapter adapter) {
         SharedPreferences sp = getSharedPreferences("shared preferences",MODE_PRIVATE);
         Gson gson = new Gson();
@@ -273,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Sorts emotion history by time
     private void sort(int n){
         if (n>0) {
             sort(n-1);
